@@ -20,7 +20,7 @@ public class HW1 {
         System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
 
         WebDriver driver = new ChromeDriver();
-        driver.get("http://syntaxprojects.com/");
+        driver.get("http://syntaxprojects.com/index.php");
         driver.manage().window().maximize();
 
        WebElement startPractising = driver.findElement(By.xpath("//a[text() = ' Start Practising ']"));
