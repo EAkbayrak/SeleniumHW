@@ -22,7 +22,7 @@ public class HW1 {
         driver.get(url);
         driver.manage().window().maximize();
         driver.switchTo().frame("FrameOne");
-        String extectedHeader = "Sorry, We Couldn't Find Anything For “Asksn”";
+        String expectedHeader = "Sorry, We Couldn't Find Anything For “Asksn”";
 
         WebElement actualHeader = driver.findElement(By.xpath("//h1[@class='heading-13']"));
 
@@ -32,10 +32,7 @@ public class HW1 {
             System.out.println("The header is not displayed");
         }
 
-        System.out.println(actualHeader.getText());
-        System.out.println(extectedHeader);
-
-        if(actualHeader.getText().equals(extectedHeader)){
+        if(actualHeader.getText().equals(expectedHeader)){
             System.out.println("The header is displaying the expected text");
         }else System.out.println("The header needs to change");
 
@@ -45,9 +42,10 @@ public class HW1 {
         WebElement enrollButton = driver.findElement(By.className("text-block-2"));
 
         if(enrollButton.isEnabled()){
-            System.out.println("The Enroll today button is enabled and clickable");
+            System.out.println("The 'Enroll today' button is enabled and clickable");
         }
 
+        //I clicked it just to make sure
         enrollButton.click();
 
 
