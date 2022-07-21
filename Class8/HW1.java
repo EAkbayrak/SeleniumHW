@@ -23,6 +23,8 @@ public class HW1 {
         WebDriver driver = new ChromeDriver();
         driver.get(url);
 
+        //click on checkbox and click on remove
+
         WebElement checkBox = driver.findElement(By.xpath("//input[@type='checkbox']"));
         checkBox.click();
 
@@ -32,27 +34,37 @@ public class HW1 {
         WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated((By.cssSelector("p#message"))));
 
+        //verify the text
+
         WebElement goneText = driver.findElement(By.cssSelector("p#message"));
         System.out.println("Is the text visible: "+goneText.isDisplayed());
+
+        //click on enable verify the textbox is enabled
 
         WebElement enableButton = driver.findElement(By.cssSelector("button[onclick='swapInput()']"));
         enableButton.click();
 
-        System.out.println("Is the text box enabled?");
         WebElement enableTextBox = driver.findElement(By.xpath("//input[@type = 'text']"));
+
+        wait.until(ExpectedConditions.elementToBeClickable(enableTextBox));
+
+        System.out.println("Is the text box enabled?");
         System.out.println(enableButton.isEnabled());
 
         wait.until(ExpectedConditions.elementToBeClickable(enableTextBox));
 
+        //enter text and click disable
         enableTextBox.sendKeys("Emre was here");
 
         WebElement disableButton = driver.findElement(By.xpath("//button[@onclick = 'swapInput()']"));
         disableButton.click();
 
-        System.out.println("Is the text box disabled now?");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(text(), 'disabled!')]")));
+
+        //verify the textbox is disabled
+
+        System.out.println("Is the text box still enabled?");
         System.out.println(enableTextBox.isEnabled());
-
-
 
     }
 }
